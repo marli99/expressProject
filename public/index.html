@@ -21,7 +21,7 @@
                 In</label>
             <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
             <div class="login-form">
-                <form class="sign-in-htm">
+                <form class="sign-in-htm" method="POST" action="/student">
                     <div class="group">
                         <label for="user" class="label">Username</label>
                         <input id="user" type="text" class="input">
@@ -35,7 +35,7 @@
                         <label for="check"><span class="icon"></span> Keep me Signed in</label>
                     </div>
                     <div class="group">
-                        <button type="submit" class="button" method="POST" action="/student" value="Sign In"></button>
+                        <button method="POST" action="/login" type="submit" class="button" value="Sign In"></button>
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">

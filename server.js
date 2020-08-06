@@ -1,14 +1,51 @@
 var express = require('express');
 const { response } = require('express');
 var app = express(3000);
+var logger = require('./logger')
+var data = require('./server/index');
 
-var data = require("../expressProject/server/index");
+var urlpath = path.join(__dirname, '../frontend/build/')
 
+app.use(logger)
+app.use(express.static(urlpath))
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
     res.send('index.html')
 });
+
+app.param('name', function (request, response, next) {
+    request.lowerName = request.params.name.toLowerCase();
+    next();
+});
+
+
+app.get('/api/classes/:/name/subject/', function (req, res) {
+    var results = [];
+    var lowerName = request.params.name.toLowerCase();
+
+    for (var i = 0; i < data.subject.length; i++) {
+        if (data.subject[i].classes === lowerName) {
+            results.push(data.classes[i])
+        }
+    }
+    response.json(results);
+
+});
+
+app.get('/api/classes/:/slot/teacher/student', function (req, res) {
+    var results = [];
+    var lowerName = request.params.slot.toLowerCase();
+
+    for (var i = 0; i < data.teachers.student.length; i++) {
+        if (data.slot[i].classes === lowerName) {
+            results.push(data.classes[i])
+        }
+    }
+    response.json(results);
+
+});
+
 
 const crypto = require('crypto');
 
@@ -30,7 +67,7 @@ const users = [
 ];
 
 app.get('/register', (req, res) => {
-    res.render('student')
+    res.send('/student.html')
 })
 
 app.post('/register', (req, res) => {
@@ -74,23 +111,7 @@ app.post('/login', (req, res) => {
     res.send('/student')
 })
 
-app.post('/api/classes/:subject/classroom/slot/group/', function (req, res) {
-    var results = [];
-    var lowerName = request.params.name.toLowerCase();
 
-    for (var i = 0; i < data.classes.length; i++) {
-        if (data.classes[i].classes === lowerName) {
-            results.push(data.classes[i])
-            res.send('/student.html')
-        }
-    }
-    response.json(results);
-
-});
-
-
-
-var data = require('./server/index.js');
 
 app.listen(3000, () => {
     console.log("server listening on port 3000");

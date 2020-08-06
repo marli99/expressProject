@@ -1,13 +1,12 @@
 var express = require('express');
 const { response } = require('express');
 var app = express(3000);
-var logger = require('./logger')
 var data = require('./server/index');
 
-var urlpath = path.join(__dirname, '../frontend/build/')
+// var urlpath = path.join(__dirname, '../frontend/build/')
 
-app.use(logger)
-app.use(express.static(urlpath))
+// app.use(logger)
+// app.use(express.static(urlpath))
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
@@ -20,16 +19,23 @@ app.param('name', function (request, response, next) {
 });
 
 
-app.get('/api/classes/:/name/subject/', function (req, res) {
-    var results = [];
-    var lowerName = request.params.name.toLowerCase();
+app.get('/api/classes', function (request, response) {
+    if (request.query.limit >= 0) {
+        response.json(data.classes.slice(0, request.query.limit));
+    } else {
 
-    for (var i = 0; i < data.subject.length; i++) {
-        if (data.subject[i].classes === lowerName) {
-            results.push(data.classes[i])
-        }
+        response.json(data.classes);
     }
-    response.json(results);
+
+});
+
+app.get('/api/teachers', function (request, response) {
+    if (request.query.limit >= 0) {
+        response.json(data.teachers.slice(0, request.query.limit));
+    } else {
+
+        response.json(data.teachers);
+    }
 
 });
 

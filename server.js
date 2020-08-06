@@ -29,12 +29,12 @@ app.get('/api/classes', function (request, response) {
 
 });
 
-app.get('/api/teachers', function (request, response) {
+app.get('/api/teachers/:classes/subject', function (request, response) {
     if (request.query.limit >= 0) {
-        response.json(data.teachers.slice(0, request.query.limit));
+        response.json(data.teachers.classes.slice(0, request.query.limit));
     } else {
 
-        response.json(data.teachers);
+        response.json(data.teachers.classes);
     }
 
 });

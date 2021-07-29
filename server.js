@@ -1,16 +1,16 @@
 var express = require('express');
+// var session = require('express-session');
+// var bodyParser = require('body-parser');
+// var path = require('path');
 const { response } = require('express');
 var app = express(3000);
 var data = require('./server/index');
 
-// var urlpath = path.join(__dirname, '../frontend/build/')
 
-// app.use(logger)
-// app.use(express.static(urlpath))
 app.use(express.static('public'));
 
-app.get('/', function (req, res) {
-    res.send('index.html')
+app.get('./public/index.html', function (req, res) {
+    res.send()
 });
 
 app.param('name', function (request, response, next) {
@@ -62,11 +62,11 @@ const getHashedPassword = (password) => {
 }
 
 const users = [
-    // This user is added to the array to avoid creating a new user on each restart
+
     {
         username: 'Marli',
         email: 'marlicorreia99@gmail.com',
-        // This is the SHA256 hash for value of `password`
+
         password: '1234',
         confirmPassword: '1234'
     }
@@ -109,12 +109,12 @@ app.post('/register', (req, res) => {
     }
 });
 
-app.get('/login', (req, res) => {
-    res.send('/student')
+app.get('/login', function (req, res) {
+    res.send('./public/student.html')
 })
 
-app.post('/login', (req, res) => {
-    res.send('/student')
+app.post('/login', function (req, res) {
+    res.send('./public/student.html')
 })
 
 

@@ -1,0 +1,113 @@
+.outer-container{
+    background-color:darkcyan;
+    width: 100%; 
+    height: 100vh;
+}
+
+.outer-container img{
+    width: 91%;
+    padding: 0;
+    margin: 0;
+}
+
+
+.menu{
+    width: 100%;
+    height: auto;
+}
+
+.menu a{
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    font-family: sans-serif;
+    float: left;
+    margin-top: 5%!Important;
+    margin: 3%;
+    margin-right: 29%;
+    margin-left: 5%;
+    margin-bottom: 13%;
+    text-align: center;
+}
+
+.cat1{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10%;
+}
+
+.cat1 img{
+    width: 20%;
+    float: left;
+    margin-right: 13%;
+}
+
+.cat2{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 7%;
+}
+
+.cat2 img{
+    width: 20%;
+    float: left;
+    margin-right: 11%;
+    margin-left: 3%;
+}
+
+.cat3{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 7%;
+}
+
+.cat3 img{
+    width: 30%;
+    float: left;
+    margin-left: -3%;
+    margin-right: 7%;
+}
+
+.cat4{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 7%;
+}
+
+.cat4 img{
+    width: 20%;
+    float: left;
+    margin-left: 2%;
+    margin-right: 13%;
+}
+
+.menu :hover{
+    background: #2A292E;
+	color: #fff;
+}
+
+.dashboard-container{
+    background-color: aliceblue;
+    width: 27%;
+    height: 100vh;
+    padding: 2%;
+    float: left;
+}
+
+.second-container{
+    width: 73%;
+    height: 94vh;
+    padding: 2%;
+    float: left;
+}
+
+h1{
+    color: wheat;
+    font-size: 30px;
+
+}
+
+strong{
+    margin-right: 3%;
+}
+

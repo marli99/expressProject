@@ -8,7 +8,7 @@ export const Home = () => {
         <div class="outer-container">
             <div className="dashboard-container">
                 <div className="menu vertical">
-                    <img src="../img/logo.png"></img>
+                    <img src="{../img/logo.png}"></img>
                     <div className="cat1">
                         <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/dashboard-512.png"></img>
                         <a>Dashboard</a>

@@ -268,7 +268,7 @@ app.get('/api/tasks', (request, response) => {
     response.json(tasks)
 });
 
-app.post('api/new', (request, response) => {
+app.post('/api/new', (request, response) => {
     var name = request.body.name;
 
     if (name != null) {
@@ -279,17 +279,20 @@ app.post('api/new', (request, response) => {
     }
 });
 
-app.put("api/tasks/:id", (request, response) => {
+app.put("/api/tasks/:id", (request, response) => {
     var id = request.params.id;
 
     if (tasks[id].completed) {
         tasks[id].completed = false;
+        response.json("task with index" + id + "Changed to complete");
     } else if (tasks[id].completed) {
         tasks[id].completed = true;
     } else {
         response.status(404).json("Task not found to update")
     }
 });
+
+app.delete('')
 
 
 // app.get('/api/slots', function (request, response) {

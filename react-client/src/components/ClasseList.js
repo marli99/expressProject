@@ -1,6 +1,7 @@
-
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { Heading } from './Heading';
 
 export const ClasseList = () => {
     // const [data, setData] = useState([]);
@@ -22,6 +23,7 @@ export const ClasseList = () => {
 
     return (
         <ListGroup className="mt-4">
+            <Heading></Heading>
             <ListGroupItem className="d-flex">
                 <strong> Grade 10 English</strong>
                 <strong> Classroom : A3</strong>

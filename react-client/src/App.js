@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { AddClasses } from './components/AddClasses';
 import { EditClasses } from './components/EditClasses';
 import { ClasseList } from './components/ClasseList';
+import { Students } from './components/Students';
+import { TeachersList } from './components/TeachersList';
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/classes/add" component={AddClasses} />
           <Route exact path="/classes/edit/:id" component={EditClasses} />
-          <Route exact path="/classes/List" component={ClasseList} />
+          <Route exact path="/Classelist" component={ClasseList} />
+          <Route exact path="/Students" component={Students} />
+          <Route exact path="/TeachersList" component={TeachersList} />
         </Switch>
       </Router>
 

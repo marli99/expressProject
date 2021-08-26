@@ -191,7 +191,7 @@ app.delete('/api/teachers/:id', function (request, response) {
     }
 
     if (classIndex == null)
-        response.status(404).json("No exercise with if " + id + " found");
+        response.status(404).json("No teacher with if " + id + " found");
     else {
         data.teachers.splice(classIndex, 1);
         response.json("teachers with id " + id + " delete.")
@@ -262,6 +262,36 @@ app.get('/api/classes/:slot/teacher/student', function (req, res) {
 
 });
 
+var tasks = [];
+
+app.get('/api/tasks', (request, response) => {
+    response.json(tasks)
+});
+
+app.post('api/new', (request, response) => {
+    var name = request.body.name;
+
+    if (name != null) {
+        taska.push({ name: name, completed: false });
+        response.json("new task added" + name);
+    } else {
+        response.status(406).json("Error trying to add new task");
+    }
+});
+
+app.put("api/tasks/:id", (request, response) => {
+    var id = request.params.id;
+
+    if (tasks[id].completed) {
+        tasks[id].completed = false;
+    } else if (tasks[id].completed) {
+        tasks[id].completed = true;
+    } else {
+        response.status(404).json("Task not found to update")
+    }
+});
+
+
 // app.get('/api/slots', function (request, response) {
 //     response.json(data.slots)
 // });
@@ -280,21 +310,8 @@ app.get('/api/teachers/:classes/subject', function (request, response) {
 
 });
 
-app.get('/api/teachers/:classes/subject', function (request, response) {
-    if (request.query.limit >= 0) {
-        response.json(data.teachers.classes.slice(0, request.query.limit));
-    } else {
-
-        response.json(data.teachers.classes);
-    }
-
-});
-
-
-
-
 const crypto = require('crypto');
-const { response } = require('express');
+const { response, request } = require('express');
 const { slots } = require('./data.js');
 
 const getHashedPassword = (password) => {
